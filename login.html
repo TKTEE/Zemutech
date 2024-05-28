@@ -81,11 +81,12 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const container = document.getElementById('container');
-            const signInButton = document.getElementById('signIn');
-            const signUpButton = document.getElementById('signUp');
+    const signInButton = document.querySelector('.overlay-panel.overlay-left .ghost');
+    const signUpButton = document.querySelector('.overlay-panel.overlay-right .ghost');
         
             signInButton.addEventListener('click', () => {
                 container.classList.remove('right-panel-active');
+                
             });
         
             signUpButton.addEventListener('click', () => {

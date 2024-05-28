@@ -34,7 +34,7 @@ footer a {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    color: #050663;
+    color: #003;
 }
 .container {
     position: relative;
@@ -88,58 +88,6 @@ h1 {
     height: 40px;
     width: 40px;
 }
-/* Container for social media buttons */
-.social-media-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Space between the buttons */
-}
-
-/* Individual button styles */
-.social-media-container .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}
-
-/* Icon styles */
-.social-media-container ion-icon {
-    font-size: 20px;
-    color: #333;
-}
-
-/* Hover effects */
-.social-media-container .btn:hover {
-    background-color: #007bff; /* Change background color on hover */
-}
-
-.social-media-container .btn:hover ion-icon {
-    color: #fff; /* Change icon color on hover */
-}
-
-/* Specific styles for different social media icons (optional) */
-.social-media-container .btn-facebook:hover {
-    background-color: #3b5998;
-}
-
-.social-media-container .btn-whatsapp:hover {
-    background-color: #25d366;
-}
-
-.social-media-container .btn-tiktok:hover {
-    background-color: #010101;
-}
-
-.social-media-container .btn-instagram:hover {
-    background-color: #e4405f;
-}
-
 span {
     font-size: 12px;
 }
