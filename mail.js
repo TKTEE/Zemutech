@@ -12,29 +12,60 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 //reference your database
-//const signIn = firebase.database().ref("zemutech");
+const contactFormDB = firebase.database().ref("zemutech");
 
 //var signIn = firebase.database().ref("zemutech"),
 
-document.getElementById('zemutech').addEventListener("submit", submitForm )
+//add event listener to the form
+document.getElementById('zemutech').addEventListener("submit", submitForm);
+document.getElementById('signIn').addEventListener("submit", signInForm);
 function submitForm(e){
-    e.preventDEfault()
+    e.preventDefault()
     var name = getElementVal('name');
-    var email = getElementVal('emailid');
-    var pswd = getElementVal('password');
+    var emailid = getElementVal('emailid');
+    var password = getElementVal('password');
     
-    saveMessages(name, emailid, password);
+    saveMessage(name, emailid, password, () => {
+        window.location.href = "index,html";
+    });
 }
 
-const saveMessage = (name, emailid, password) => {
-    var newContactForm = contactFormDB.push().
-    newContentForm.set({
-        name : name,
-        emailid : emailid,
-        password : password,
-    })
+function signInForm(e) {
+    e.preventDefault();
+    var emailid = getElementVal('signinEmail');
+    var password = getElementVal('signinPassword');
+    
+    authenticateUser(emailid, password, () => {
+        window.location.href = "index.html"; // Redirect to home page on successful sign-in
+    });
 }
 
-const getElementVal = () => {
+const saveMessage = (name, emailid, password, callback) => {
+    var newContactForm = contactFormDB.push();
+    newContactForm.set({
+        name: name,
+        emailid: emailid,
+        password: password,
+    }, (error) => {
+        if (error) {
+            console.error("Error saving message: ", error);
+        } else {
+            callback();
+        }
+    });
+}
+
+const authenticateUser = (emailid, password, callback) => {
+    firebase.auth().signInWithEmailAndPassword(emailid, password)
+        .then((userCredential) => {
+            // Sign-in successful.
+            callback();
+        })
+        .catch((error) => {
+            console.error("Error signing in: ", error);
+        });
+}
+
+const getElementVal = (id) => {
     return document.getElementById(id).value;
 }
